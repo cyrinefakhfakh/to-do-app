@@ -1,19 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img123"
+    android:orientation="vertical"
+    android:background="@drawable/img2"
     tools:context=".MainActivity">
 
     <TextView
+        android:layout_marginTop="400sp"
+        android:layout_marginStart="100sp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Get organazed your Life"
+        android:textSize="20sp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="274dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70sp"
+        android:layout_marginTop="30sp"
+        android:text="Dyto is a simple and effective to-do list and task manager app which helps you
+        manage time"
+        android:textSize="15sp" />
+    <Button
+        android:id="@+id/buttonNavigate"
+        android:textColor="#000000"
+        android:text="Get started"
+        android:textSize="15sp"
+        android:backgroundTint="#FCE0A2"
+        android:layout_marginStart="100sp"
+        android:layout_marginTop="40sp"
+        android:layout_width="200sp"
+        android:layout_height="48sp"/>
+</LinearLayout>
