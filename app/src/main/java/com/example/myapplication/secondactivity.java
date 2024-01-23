@@ -49,31 +49,11 @@ public class secondactivity extends AppCompatActivity {
         });
 
 
-        TextView buttonNavigate4 = findViewById(R.id.textView3);
+
+
+
+        TextView buttonNavigate4 = findViewById(R.id.textView4);
         buttonNavigate4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Create an Intent to start the SecondActivity
-                Intent intent = new Intent(secondactivity.this, Myactivity5.class);
-                startActivity(intent);
-            }
-        });
-
-
-        TextView buttonNavigate5 = findViewById(R.id.textView4);
-        buttonNavigate5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Create an Intent to start the SecondActivity
-                Intent intent = new Intent(secondactivity.this, Myactivity5.class);
-                startActivity(intent);
-            }
-        });
-
-
-
-        TextView buttonNavigate6 = findViewById(R.id.textView5);
-        buttonNavigate6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create an Intent to start the SecondActivity
@@ -81,6 +61,10 @@ public class secondactivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
+
 
     }
 }
