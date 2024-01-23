@@ -11,9 +11,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Today"
+        android:text="Personal :"
         android:textSize="30sp"
-        android:drawableStart="@drawable/sun"
+        android:drawableStart="@drawable/phone"
         android:layout_marginLeft="30sp"
         android:layout_marginTop="150sp"
         />

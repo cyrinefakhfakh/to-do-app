@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Create an Intent to start the SecondActivity
-                Intent intent = new Intent(MainActivity.this, android.R.layout.class);
+                Intent intent = new Intent(MainActivity.this, secondactivity.class);
                 startActivity(intent);
             }
         });
