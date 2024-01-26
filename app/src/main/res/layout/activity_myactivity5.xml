@@ -20,20 +20,46 @@
         android:textSize="30sp"
         android:drawableStart="@drawable/phone"
         android:layout_marginLeft="30sp"
-        android:layout_marginTop="150sp"
+        android:layout_marginTop="100sp"
         />
 
-    <Button
-        android:layout_width="73dp"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="58dp"
+            android:layout_height="54dp"
+
+            android:layout_marginStart="300sp"
+
+            android:layout_marginTop="0sp"
+            android:backgroundTint="#F6D9AF"
+            android:textSize="48sp"
+            app:icon="@drawable/addd"
+            app:iconSize="30sp" />
+
+        <EditText
+            android:id="@+id/editTextTask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50sp"
+            android:layout_marginEnd="106dp"
+            android:layout_marginBottom="16dp"
+            android:hint="Enter your task"
+            android:textSize="20sp" />
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/listViewTasks"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="300sp"
+        android:layout_below="@id/button"
+        android:layout_marginTop="16dp"
+        android:scrollbarAlwaysDrawHorizontalTrack="true"/>
 
-        android:layout_marginTop="400sp"
-
-        android:backgroundTint="#F6D9AF"
-        android:textSize="48sp"
-        app:icon="@drawable/addd"
-        app:iconSize="30sp" />
 
 
 </LinearLayout>

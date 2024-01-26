@@ -1,6 +1,7 @@
 package com.example.myapplication;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ public class MainActivity6 extends
     private ListView listViewTasks;
     private ArrayList<String> tasks;
     private TaskAdapter taskAdapter;
-
+    private ImageButton delete;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +28,7 @@ public class MainActivity6 extends
         editTextTask = findViewById(R.id.editTextTask);
         buttonAddTask = findViewById(R.id.button);
         listViewTasks = findViewById(R.id.listViewTasks);
+        delete = findViewById(R.id.delete);
 
         tasks = new ArrayList<>();
         taskAdapter = new TaskAdapter(this, tasks);
@@ -39,6 +41,7 @@ public class MainActivity6 extends
             }
         });
         loadTasksFromSharedPreferences();
+
     }
     public void onBackButtonClicked(View view) {
         // Handle back button click
