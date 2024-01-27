@@ -68,13 +68,14 @@
         android:textSize="30sp" />
     <TextView
         android:elevation="4dp"
-        android:id="@+id/textView4"
+        android:id="@+id/textView44"
         android:layout_width="328dp"
         android:layout_height="63dp"
         android:layout_marginStart="50sp"
         android:layout_marginTop="20sp"
         android:background="#F1EDE5"
         android:backgroundTint="#F6F5F4"
+        android:clickable="true"
         android:drawableStart="@drawable/sport"
         android:drawablePadding="16sp"
         android:text="Sport"

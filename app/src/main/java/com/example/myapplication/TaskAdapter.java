@@ -32,15 +32,7 @@ public class TaskAdapter extends ArrayAdapter<String> {
         checkBoxTask.setText(task);
         edittext.setText(task);
 
-        // Set a listener for delete button click
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Remove the task from the list
-                tasks.remove(position);
-                notifyDataSetChanged(); // Update the ListView
-            }
-        });
+
 
         return convertView;
     }}

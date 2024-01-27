@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/img123"
-    tools:context=".Myactivity3">
+    tools:context=".Myactivity6">
     <ImageView
         android:id="@+id/back"
         android:src="@drawable/back"
         android:layout_width="40sp"
         android:layout_height="40sp"
-        android:onClick="onBackButtonClicked"/>
+        android:onClick="onBackButtonClicked"
+        android:contentDescription="TODO" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sport :"
         android:textSize="30sp"
         android:drawableStart="@drawable/sport"
-        android:layout_marginLeft="30sp"
+        android:layout_marginStart="30sp"
         android:layout_marginTop="100sp"
         />
 
@@ -38,7 +41,7 @@
             android:backgroundTint="#F6D9AF"
             android:src="@drawable/add"
             android:textSize="48sp"
-            />
+            android:contentDescription="@string/todo" />
 
         <EditText
             android:id="@+id/editTextTask"
@@ -56,15 +59,17 @@
             android:layout_marginStart="360sp"
             android:backgroundTint="#F6D9AF"
             android:src="@drawable/dell"
-            android:layout_marginTop="6sp"/>
+            android:layout_marginTop="6sp"
+            android:contentDescription="@string/todo" />
     </RelativeLayout>
     <ListView
-    android:id="@+id/listViewTasks"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/button"
-    android:layout_marginTop="16dp"/>
+        android:id="@+id/listViewTasks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button"
+        android:layout_marginTop="16dp"/>
 
 
 
 </LinearLayout>
+

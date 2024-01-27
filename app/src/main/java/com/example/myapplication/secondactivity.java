@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -52,12 +53,13 @@ public class secondactivity extends AppCompatActivity {
 
 
 
-        TextView buttonNavigate4 = findViewById(R.id.textView4);
+        TextView buttonNavigate4 = findViewById(R.id.textView44);
         buttonNavigate4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("SecondActivity", "Button 4 clicked");
                 // Create an Intent to start the SecondActivity
-                Intent intent = new Intent(secondactivity.this, MainActivity6.class);
+                Intent intent = new Intent(secondactivity.this, Myactivity6.class);
                 startActivity(intent);
             }
         });
