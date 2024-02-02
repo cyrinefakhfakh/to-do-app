@@ -1,80 +1,91 @@
 package com.example.myapplication;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+public class Myactivity3 extends MainActivity {
 
-
-public class Myactivity3 extends AppCompatActivity {
-    private ImageView backButton;
-    private ImageButton addButton;
-    private  EditText editTextTask;
-    private ListView listViewTasks;
-    private ArrayList<String> tasks;
-    private TaskAdapter taskAdapter;
-
+    private ArrayList<String> taskList;
+    private ArrayAdapter<String> adapter;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myactivity3);
 
-        editTextTask = findViewById(R.id.editTextTask);
-        backButton = findViewById(R.id.back);
-        addButton = findViewById(R.id.button);
-        listViewTasks = findViewById(R.id.listViewTasks);
+        // Initialize task list and adapter
+        taskList = new ArrayList<>();
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, taskList);
 
-        tasks = new ArrayList<>();
-        taskAdapter = new TaskAdapter(this, tasks);
-        listViewTasks.setAdapter(taskAdapter);
-
-        // Load tasks from SharedPreferences
-        loadTasksFromSharedPreferences();
-
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish(); // Close the current activity and return to the previous one
-            }
-        });
-
+        ListView listViewTasks = findViewById(R.id.listViewTasks);
+        listViewTasks.setAdapter(adapter);
+        sharedPreferences = getSharedPreferences("tasks", MODE_PRIVATE);
+        Set<String> savedTasks = sharedPreferences.getStringSet("taskSet", new HashSet<String>());
+        taskList.addAll(savedTasks);
+        adapter.notifyDataSetChanged();
+        ImageButton addButton = findViewById(R.id.button);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addTask();
             }
         });
+
+        ImageButton deleteButton = findViewById(R.id.delete);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteTask();
+            }
+        });
     }
 
-    private void loadTasksFromSharedPreferences() {
-        SharedPreferences preferences = getSharedPreferences("MyTasks", Context.MODE_PRIVATE);
-        Set<String> taskSet = preferences.getStringSet("tasks", new HashSet<>());
-        tasks.addAll(taskSet);
-        taskAdapter.notifyDataSetChanged();
+    public void onBackButtonClicked(View view) {
+        // Handle back button click here
+        finish(); // Close the activity
     }
+
     private void addTask() {
+        EditText editTextTask = findViewById(R.id.editTextTask);
         String task = editTextTask.getText().toString().trim();
+
         if (!task.isEmpty()) {
-            tasks.add(task);
-            taskAdapter.notifyDataSetChanged();
+            taskList.add(task);
+            adapter.notifyDataSetChanged();
             editTextTask.setText("");
-            saveTasksToSharedPreferences();
-        }}
-    private void saveTasksToSharedPreferences() {
-        SharedPreferences preferences = getSharedPreferences("MyTasks", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        Set<String> taskSet = new HashSet<>(tasks);
-        editor.putStringSet("tasks", taskSet);
-        editor.apply();
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putStringSet("taskSet", new HashSet<>(taskList));
+            editor.apply();
+        } else {
+            Toast.makeText(this, "Please enter a task", Toast.LENGTH_SHORT).show();
+        }
     }
 
+    private void deleteTask() {
+        ListView listViewTasks = findViewById(R.id.listViewTasks);
+        int position = listViewTasks.getCheckedItemPosition();
+
+        if (position != ListView.INVALID_POSITION) {
+            taskList.remove(position);
+            adapter.notifyDataSetChanged();
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putStringSet("taskSet", new HashSet<>(taskList));
+            editor.apply();
+        } else {
+            Toast.makeText(this, "Please select a task to delete", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
