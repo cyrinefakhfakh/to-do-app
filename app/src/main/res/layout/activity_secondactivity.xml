@@ -52,6 +52,8 @@
         android:drawablePadding="16sp"
         android:text="Planner"
         android:textSize="30sp" />
+
+
     <TextView
         android:elevation="4dp"
         android:id="@+id/textView3"
@@ -62,9 +64,9 @@
         android:background="#F1EDE5"
         android:backgroundTint="#F6F5F4"
         android:clickable="true"
-        android:drawableStart="@drawable/phone"
+        android:drawableStart="@drawable/studyy"
         android:drawablePadding="16sp"
-        android:text="Personal"
+        android:text="Study"
         android:textSize="30sp" />
     <TextView
         android:elevation="4dp"
@@ -94,34 +96,7 @@
         android:drawablePadding="16sp"
         android:text="Shopping"
         android:textSize="30sp" />
-    <TextView
-        android:elevation="4dp"
-        android:id="@+id/textView6"
-        android:layout_width="328dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="50sp"
-        android:layout_marginTop="20sp"
-        android:background="#F1EDE5"
-        android:backgroundTint="#F6F5F4"
-        android:clickable="true"
-        android:drawableStart="@drawable/study"
-        android:drawablePadding="16sp"
-        android:text="Work"
-        android:textSize="30sp" />
-    <TextView
-        android:elevation="4dp"
-        android:id="@+id/textView7"
-        android:layout_width="328dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="50sp"
-        android:layout_marginTop="20sp"
-        android:background="#F1EDE5"
-        android:backgroundTint="#F6F5F4"
-        android:clickable="true"
-        android:drawableStart="@drawable/studyy"
-        android:drawablePadding="16sp"
-        android:text="Study"
-        android:textSize="30sp" />
+
 
 
 </LinearLayout>

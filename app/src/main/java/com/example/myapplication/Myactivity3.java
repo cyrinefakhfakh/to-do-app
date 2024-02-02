@@ -3,10 +3,10 @@ package com.example.myapplication;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -39,6 +39,7 @@ public class Myactivity3 extends MainActivity {
         Set<String> savedTasks = sharedPreferences.getStringSet("taskSet", new HashSet<String>());
         taskList.addAll(savedTasks);
         adapter.notifyDataSetChanged();
+        listViewTasks.setOnTouchListener(new SwipeToDeleteListener(listViewTasks));
 
         listViewTasks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -68,7 +69,43 @@ public class Myactivity3 extends MainActivity {
         // Handle back button click here
         finish(); // Close the activity
     }
+    public class SwipeToDeleteListener implements View.OnTouchListener {
 
+        private float startX;
+        private ListView listView;
+
+        SwipeToDeleteListener(ListView listView) {
+            this.listView = listView;
+        }
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    startX = event.getX();
+                    return true;
+                case MotionEvent.ACTION_UP:
+                    float endX = event.getX();
+                    if (endX - startX > 100) {
+                        // Swiped from left to right
+                        int position = listView.pointToPosition((int) startX, (int) event.getY());
+                        if (position != ListView.INVALID_POSITION) {
+                            taskList.remove(position);
+                            adapter.notifyDataSetChanged();
+                            saveTasks();
+                        }
+                    }
+                    return true;
+            }
+            return false;
+        }
+    }
+    private void saveTasks() {
+        // Save tasks
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putStringSet("taskSet", new HashSet<>(taskList));
+        editor.apply();
+    }
     private void addTask() {
         EditText editTextTask = findViewById(R.id.editTextTask);
         String task = editTextTask.getText().toString().trim();
@@ -77,6 +114,7 @@ public class Myactivity3 extends MainActivity {
             taskList.add(task);
             adapter.notifyDataSetChanged();
             editTextTask.setText("");
+            saveTasks();
 
             // Save tasks
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -88,20 +126,8 @@ public class Myactivity3 extends MainActivity {
     }
 
     private void deleteTask() {
-        ListView listViewTasks = findViewById(R.id.listViewTasks);
-        int position = listViewTasks.getCheckedItemPosition();
-
-        if (position != ListView.INVALID_POSITION) {
-            taskList.remove(position);
-            adapter.notifyDataSetChanged();
-
-            // Save tasks
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putStringSet("taskSet", new HashSet<>(taskList));
-            editor.apply();
-        } else {
-            Toast.makeText(this, "Please select a task to delete", Toast.LENGTH_SHORT).show();
-        }
+        taskList.clear();
+        adapter.notifyDataSetChanged();
     }
 }
 
