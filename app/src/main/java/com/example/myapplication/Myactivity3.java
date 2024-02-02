@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+
 public class Myactivity3 extends MainActivity {
 
     private ArrayList<String> taskList;
@@ -28,14 +29,24 @@ public class Myactivity3 extends MainActivity {
 
         // Initialize task list and adapter
         taskList = new ArrayList<>();
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, taskList);
+        adapter = new ArrayAdapter<>(this, R.layout.activity_item_task, R.id.textViewTask, taskList);
 
         ListView listViewTasks = findViewById(R.id.listViewTasks);
         listViewTasks.setAdapter(adapter);
+
+        // Load saved tasks
         sharedPreferences = getSharedPreferences("tasks", MODE_PRIVATE);
         Set<String> savedTasks = sharedPreferences.getStringSet("taskSet", new HashSet<String>());
         taskList.addAll(savedTasks);
         adapter.notifyDataSetChanged();
+
+        listViewTasks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Handle task item click here (if needed)
+            }
+        });
+
         ImageButton addButton = findViewById(R.id.button);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +77,8 @@ public class Myactivity3 extends MainActivity {
             taskList.add(task);
             adapter.notifyDataSetChanged();
             editTextTask.setText("");
+
+            // Save tasks
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putStringSet("taskSet", new HashSet<>(taskList));
             editor.apply();
@@ -81,6 +94,8 @@ public class Myactivity3 extends MainActivity {
         if (position != ListView.INVALID_POSITION) {
             taskList.remove(position);
             adapter.notifyDataSetChanged();
+
+            // Save tasks
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putStringSet("taskSet", new HashSet<>(taskList));
             editor.apply();
@@ -89,3 +104,4 @@ public class Myactivity3 extends MainActivity {
         }
     }
 }
+
