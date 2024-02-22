@@ -24,6 +24,11 @@
 
          />
 
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="386dp"
+        android:layout_height="50dp" />
+
     <TextView
         android:elevation="4dp"
         android:id="@+id/textView"
@@ -96,7 +101,6 @@
         android:drawablePadding="16sp"
         android:text="Shopping"
         android:textSize="30sp" />
-
 
 
 </LinearLayout>

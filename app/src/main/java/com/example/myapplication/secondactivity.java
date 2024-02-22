@@ -63,6 +63,17 @@ public class secondactivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        TextView buttonNavigate5 = findViewById(R.id.textView5);
+        buttonNavigate5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("SecondActivity", "Button 4 clicked");
+                // Create an Intent to start the SecondActivity
+                Intent intent = new Intent(secondactivity.this, shopping.class);
+                startActivity(intent);
+            }
+        });
+
 
 
 

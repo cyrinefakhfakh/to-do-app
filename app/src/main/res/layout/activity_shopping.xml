@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".shopping"
+    android:orientation="vertical"
+    android:background="@drawable/img123">
+    <ImageView
+        android:id="@+id/back"
+        android:src="@drawable/back"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:onClick="onBackButtonClicked"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shopping :"
+        android:textSize="30sp"
+        android:drawableStart="@drawable/shop"
+        android:layout_marginLeft="30sp"
+        android:layout_marginTop="100sp"
+        />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <ImageButton
+            android:id="@+id/button"
+            android:layout_marginTop="6sp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="300sp"
+            android:backgroundTint="#F6D9AF"
+            android:src="@drawable/add"
+            android:textSize="48sp"
+            />
+
+        <EditText
+            android:id="@+id/editTextTask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50sp"
+            android:layout_marginEnd="106dp"
+            android:layout_marginBottom="16dp"
+            android:hint="Enter your task"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/delete"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="360sp"
+            android:backgroundTint="#F6D9AF"
+            android:src="@drawable/dell"
+            android:layout_marginTop="6sp"/>
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/listViewTasks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button"
+        android:layout_marginTop="16dp"
+        android:scrollbarAlwaysDrawHorizontalTrack="true"/>
+
+
+
+</LinearLayout>

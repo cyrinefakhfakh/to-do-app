@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,14 +16,15 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Myactivity5 extends MainActivity {
+public class shopping extends AppCompatActivity {
     private ArrayList<String> taskList;
     private ArrayAdapter<String> adapter;
     private SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_myactivity5);
+        setContentView(R.layout.activity_shopping);
 
         taskList = new ArrayList<>();
         adapter = new ArrayAdapter<>(this, R.layout.activity_item_task, R.id.textViewTask, taskList);
@@ -35,7 +37,7 @@ public class Myactivity5 extends MainActivity {
         Set<String> savedTasks = sharedPreferences.getStringSet("taskSet", new HashSet<String>());
         taskList.addAll(savedTasks);
         adapter.notifyDataSetChanged();
-        listViewTasks.setOnTouchListener(new Myactivity5.SwipeToDeleteListener(listViewTasks));
+        listViewTasks.setOnTouchListener(new shopping.SwipeToDeleteListener(listViewTasks));
 
         listViewTasks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -124,13 +126,5 @@ public class Myactivity5 extends MainActivity {
     private void deleteTask() {
         taskList.clear();
         adapter.notifyDataSetChanged();
-    }}
-
-
-
-
-
-
-
-
-
+    }
+}
